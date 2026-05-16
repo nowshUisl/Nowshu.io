@@ -1,0 +1,287 @@
+/* Google Font — must stay at the top before any other styles */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+/* Strip default browser spacing and sizing so everything is consistent */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Base page styles — smooth scrolling is set here so anchor links feel natural */
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    color: #222;
+    background: #fff;
+    scroll-behavior: smooth;
+}
+
+/* ── NAVBAR ── */
+ 
+/* Fixed at the top so it stays visible while scrolling */
+.navbar{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 15px 50px;
+
+    background: rgba(255, 255, 255, 0.15);/* semi-transparent white */
+    backdrop-filter: blur(10px); /* frosted glass effect */
+    -webkit-backdrop-filter: blur(10px);/* same but for Safari */
+
+    border-bottom: 1px solid rgba(255,255,255,0.2);/* subtle divider line */
+
+    z-index: 1000;/* stays above everything else on the page */
+}
+
+
+.navbar h2{
+    color: white;
+}
+/* Slightly smaller padding when JS adds the shrink class on scroll */
+.navbar.shrink {
+    padding: 10px 60px;
+}
+
+.navbar h2 {
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 14px;
+    transition: 0.3s;
+    padding-bottom: 4px;/* room for the active underline below */
+}
+
+.navbar a:hover {
+    opacity: 0.7;
+}
+/* White underline on whichever nav link matches the current section */
+.navbar a.active {
+    border-bottom: 2px solid #fff;
+}
+
+/* ── HERO ── */
+ 
+/* Shorter than the homepage hero — package detail page */
+.hero {
+    height: 60vh;
+    background: url("vecteezy_graubunden-switzerland-february-11-2019-landwasser_34114828-ezgif.com-video-to-gif-converter.gif") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    position: relative;
+}
+/* Dark overlay so the text is readable over the GIF */
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+}
+/* Text sits above the overlay */
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+    opacity: 0.9;
+}
+/* ── SECTIONS & GRID ── */
+section {
+    padding: 60px;
+}
+
+.title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+}
+/* Responsive grid — fills available space*/
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+
+    /* this creates space between top and bottom rows */
+    margin-bottom: 60px;
+}
+/* ── CARDS ── */
+.card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+/* Lifts the card up slightly instead of scaling — feels a bit more refined */
+.card:hover {
+    transform: translateY(-5px);
+}
+/* Fixed height keeps all images the same size regardless of the source */
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 15px;
+}
+
+.card-content h3 {
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+
+.card-content p {
+    font-size: 14px;
+    color: #555;
+}
+/* ── PRICE BOX ── */
+ 
+/* Centered box that draws attention to the total cost */
+.price {
+    text-align: center;
+    padding: 40px;
+    background: #f5f5f5;
+    border-radius: 12px;
+}
+
+.price h2 {
+    font-size: 40px;
+    margin: 10px 0;
+}
+
+.price p {
+    color: #555;
+}
+/* ── BUTTON ── */
+ 
+/* Dark pill button, inverted from the homepages white one */
+.btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 28px;
+    background: #111;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: 0.3s;
+}
+/* Slightly lighter + grows on hover */
+.btn:hover {
+    background: #333;
+    transform: scale(1.05);
+}
+
+/* ── FOOTER ── */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #111;
+    color: #fff;
+}
+
+/* ── SCROLL ANIMATIONS ── */
+ 
+/* Starting state — invisible and shifted down */
+.hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+/* JS adds this when the element enters the viewport */
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.footer{
+    background: #111;
+    color: white;
+    padding: 60px 50px 20px;
+}
+
+.footer-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.footer h2,
+.footer h3{
+    margin-bottom: 15px;
+}
+
+.footer p{
+    color: rgba(255,255,255,0.75);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.footer-links{
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-links a{
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: 0.3s;
+}
+
+.footer-links a:hover{
+    color: white;
+    transform: translateX(5px);
+}
+
+.footer-bottom{
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 20px;
+    text-align: center;
+}
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+
+    .navbar {
+        padding: 20px;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    section {
+        padding: 30px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .price h2 {
+        font-size: 30px;
+    }
+}
